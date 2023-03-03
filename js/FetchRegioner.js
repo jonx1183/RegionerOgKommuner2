@@ -9,5 +9,17 @@ function fetchAny(url){
 const ddRegioner = document.getElementById("ddRegioner");
 function fillRegionDropDown(region){
     const el = document.createElement("option")
-    el
+    el.textContent = region.navn;
+    el.value = region.kode;
+    el.region = region;
+    ddRegioner.appendChild(el);
 }
+
+async function fetchRegioner(){
+    const regionList = await fetchAny(urlRegioner);
+    console.log(regionList)
+    regionList.forEach(fillRegionDropDown)
+}
+
+const pbFetchRegioner = document.getElementById("pbFetchRegioner");
+pbFetchRegioner.addEventListener('click', fetchRegioner);
