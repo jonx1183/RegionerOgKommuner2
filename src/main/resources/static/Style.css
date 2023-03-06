@@ -1,26 +1,28 @@
-table{
+table {
     margin-left: auto;
     margin-right: auto;
     font-size: 20px;
     height: 100%;
     table-layout: fixed;
 }
-td{
+
+td {
     border: 1px solid black;
     text-align: center;
     padding: 1px;
 }
 
-tr:nth-child(even){
+tr:nth-child(even) {
     background-color: #00cf45;
 }
 
-h1{
+h1 {
     color: green;
 }
 
-.buttondelete{
-    border: none;
+
+.buttondelete {
+    border:none;
     border-radius:10px;
     box-shadow: 0px 0px 2px 2px rgb(0,0,0);
     color: #fff;

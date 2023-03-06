@@ -9,7 +9,7 @@ function createTable(kommune){
     let cellCount = 0;
     let rowCount = tblKommune.rows.length;
     let row = tblKommune.insertRow(rowCount);
-    let cell = tblKommune.insertCell(cellCount++);
+    let cell = row.insertCell(cellCount++);
     cell.innerHTML = kommune.kode;
 
     cell = row.insertCell(cellCount++);
