@@ -9,14 +9,21 @@ function createTable(kommune){
     let cellCount = 0;
     let rowCount = tblKommune.rows.length;
     let row = tblKommune.insertRow(rowCount);
+    row.id = kommune.navn;
+
+
     let cell = row.insertCell(cellCount++);
     cell.innerHTML = kommune.kode;
 
     cell = row.insertCell(cellCount++);
-    cell.innerHTML = kommune.navn;
+    let atag= document.createElement("a");
+    atag.setAttribute("href", kommune.href);
+    atag.innerText = kommune.navn;
+    cell.appendChild(atag);
 
     cell = row.insertCell(cellCount++);
     cell.innerHTML = kommune.region.navn;
+
 
     cell = row.insertCell(cellCount++);
     let inpHrefPhoto = document.createElement("input");
@@ -41,6 +48,21 @@ function createTable(kommune){
         updateKommune(kommune)
     })
     cell.appendChild(pbUpdate)
+
+    cell = row.insertCell(cellCount++)
+    let pbDelete = document.createElement("button")
+    pbDelete.textContent = "Delete"
+    pbDelete.className = "buttonDelete"
+    pbDelete.addEventListener('click',function (){
+        const rowdel = document.getElementById(kommune.navn)
+        rowdel.remove();
+        deleteKommune(kommune)
+    })
+    cell.appendChild(pbDelete)
+}
+
+async function deleteKommune(){
+    console.log("selt kommune" + kommune.navn)
 }
 
 async function updateKommune(kommune) {
