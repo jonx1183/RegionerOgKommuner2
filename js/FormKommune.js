@@ -34,12 +34,10 @@ async function handleFormSubmit(event) {
 
 async function postFormData(url, formData) {
     const plainFormData = Object.fromEntries(formData.entries())
+    const ix = ddRegioner.selectedIndex;
+    const linje = ddRegioner[ix]
+    plainFormData.region = linje.region
     console.log(plainFormData)
-
-    const region = {}
-    region.kode = "1085"
-    plainFormData.region = region
-
     const formDataJsonString = JSON.stringify(plainFormData)
 
     const fetchOptions = {
