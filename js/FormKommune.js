@@ -20,6 +20,12 @@ async function handleFormSubmit(event) {
         const formData = new FormData(form)
         console.log(formData)
         const responseData = await postFormData(url, formData)
+
+        alert(formData.get('navn')+ 'er oprettet');
+
+        const homeUrl = "KommuneTabel.html";
+        window.location.replace(homeUrl) //man kan ikke gøre det her indeni en submit button
+        //window.location.href = homeUrl;
     } catch (error) {
         alert(error.message)
         console.log(error)
@@ -53,3 +59,20 @@ async function postFormData(url, formData) {
     return response.json();
 
 }
+
+const ddRegioner = document.getElementById("ddRegioner");
+function fillRegionerDropDown(region){
+    const el = document.createElement("option")
+    el.textContent = region.navn
+    el.value = region.kode
+    el.region = region
+    ddRegioner.appendChild(el)
+}
+
+async function getRegioner(){
+    await fetchRegioner()
+    console.log(regionList)
+    regionList.forEach(fillRegionerDropDown)
+}
+
+getRegioner();
